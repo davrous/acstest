@@ -48,7 +48,7 @@ We're almost done! We now need to associate your Github repo with the freshly pr
 
 ![3 resources created: a Communication Service, a Cosmos DB & a Static Web App](./images/acsquicktesttemplatebutton005.jpg)
 
-Click on the Static Web App named "sttapp-*yourname*" then click on the "**Manage deployment token**" button and copy to the clipboard the secret token.
+Click on the Static Web App named "staticwebapp-*yourname*" then click on the "**Manage deployment token**" button and copy to the clipboard the secret token.
 
 ![Azure SWA deployment token screen](./images/acsquicktesttemplatebutton006.jpg)
 

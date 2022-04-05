@@ -15,7 +15,7 @@ on:
       acsvc_location:
         type: string
         required: true
-      sttapp_location:
+      swa_location:
         type: string
         required: true
     secrets:
@@ -52,14 +52,14 @@ jobs:
           -Location "${{ inputs.cosdba_location }}" `
           -CosmosDbPrimaryRegion "${{ inputs.cosdba_location }}" `
           -CommunicationServiceDataLocation "${{ inputs.acsvc_location }}" `
-          -StaticWebAppLocation "${{ inputs.sttapp_location }}" `
+          -StaticWebAppLocation "${{ inputs.swa_location }}" `
           -TargetScope Subscription
 
         $provisioned = $result | ConvertFrom-Json
-        $deploymentKey = $provisioned.properties.outputs.sttappDeploymentKey.value
+        $deploymentKey = $provisioned.properties.outputs.swaDeploymentKey.value
 
         echo "::add-mask::$deploymentKey"
-        echo "::set-output name=sttapp_deploymentkey::$deploymentKey"
+        echo "::set-output name=swa_deploymentkey::$deploymentKey"
 
     - name: Update GitHub repository secrets
       uses: hmanzur/actions-set-secret@v2.0.0
@@ -67,11 +67,11 @@ jobs:
         token: ${{ secrets.pa_token }}
         repository: ${{ github.repository }}
         name: AZURE_STATIC_WEB_APPS_API_TOKEN
-        value: ${{ steps.provisioned.outputs.sttapp_deploymentkey }}
+        value: ${{ steps.provisioned.outputs.swa_deploymentkey }}
 
     # - name: Update GitHub repository secrets
     #   uses: gliech/create-github-secret-action@v1.4.10
     #   with:
     #     pa_token: ${{ secrets.pa_token }}
     #     name: AZURE_STATIC_WEB_APPS_API_TOKEN
-    #     value: ${{ steps.provisioned.outputs.sttapp_deploymentkey }}
+    #     value: ${{ steps.provisioned.outputs.swa_deploymentkey }}

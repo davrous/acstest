@@ -128,14 +128,14 @@ param acsvcDataLocation string = 'United States'
     'West Europe'
     'West US 2'
 ])
-param sttappLocation string = 'Central US'
-param sttappSkuName string = 'Free'
-param sttappAllowConfigFileUpdates bool = true
+param swaLocation string = 'Central US'
+param swaSkuName string = 'Free'
+param swaAllowConfigFileUpdates bool = true
 @allowed([
     'Disabled'
     'Enabled'
 ])
-param sttappStagingEnvironmentPolicy string = 'Enabled'
+param swaStagingEnvironmentPolicy string = 'Enabled'
 
 resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
     name: 'rg-${name}'
@@ -158,13 +158,13 @@ module resources './main.bicep' = {
 
         acsvcDataLocation: acsvcDataLocation
 
-        sttappLocation: sttappLocation
-        sttappSkuName: sttappSkuName
-        sttappAllowConfigFileUpdates: sttappAllowConfigFileUpdates
-        sttappStagingEnvironmentPolicy: sttappStagingEnvironmentPolicy
+        swaLocation: swaLocation
+        swaSkuName: swaSkuName
+        swaAllowConfigFileUpdates: swaAllowConfigFileUpdates
+        swaStagingEnvironmentPolicy: swaStagingEnvironmentPolicy
     }
 }
 
 output cosdbaConnectionString string = resources.outputs.cosdbaConnectionString
 output acsvcConnectionString string = resources.outputs.acsvcConnectionString
-output sttappDeploymentKey string = resources.outputs.sttappDeploymentKey
+output swaDeploymentKey string = resources.outputs.swaDeploymentKey
