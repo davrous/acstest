@@ -150,7 +150,7 @@
         "United States"
       ]
     },
-    "sttappLocation": {
+    "swaLocation": {
       "type": "string",
       "defaultValue": "Central US",
       "allowedValues": [
@@ -161,15 +161,15 @@
         "West US 2"
       ]
     },
-    "sttappSkuName": {
+    "swaSkuName": {
       "type": "string",
       "defaultValue": "Free"
     },
-    "sttappAllowConfigFileUpdates": {
+    "swaAllowConfigFileUpdates": {
       "type": "bool",
       "defaultValue": true
     },
-    "sttappStagingEnvironmentPolicy": {
+    "swaStagingEnvironmentPolicy": {
       "type": "string",
       "defaultValue": "Enabled",
       "allowedValues": [
@@ -223,17 +223,17 @@
           "acsvcDataLocation": {
             "value": "[parameters('acsvcDataLocation')]"
           },
-          "sttappLocation": {
-            "value": "[parameters('sttappLocation')]"
+          "swaLocation": {
+            "value": "[parameters('swaLocation')]"
           },
-          "sttappSkuName": {
-            "value": "[parameters('sttappSkuName')]"
+          "swaSkuName": {
+            "value": "[parameters('swaSkuName')]"
           },
-          "sttappAllowConfigFileUpdates": {
-            "value": "[parameters('sttappAllowConfigFileUpdates')]"
+          "swaAllowConfigFileUpdates": {
+            "value": "[parameters('swaAllowConfigFileUpdates')]"
           },
-          "sttappStagingEnvironmentPolicy": {
-            "value": "[parameters('sttappStagingEnvironmentPolicy')]"
+          "swaStagingEnvironmentPolicy": {
+            "value": "[parameters('swaStagingEnvironmentPolicy')]"
           }
         },
         "template": {
@@ -312,7 +312,7 @@
                 "United States"
               ]
             },
-            "sttappLocation": {
+            "swaLocation": {
               "type": "string",
               "defaultValue": "Central US",
               "allowedValues": [
@@ -323,15 +323,15 @@
                 "West US 2"
               ]
             },
-            "sttappSkuName": {
+            "swaSkuName": {
               "type": "string",
               "defaultValue": "Free"
             },
-            "sttappAllowConfigFileUpdates": {
+            "swaAllowConfigFileUpdates": {
               "type": "bool",
               "defaultValue": true
             },
-            "sttappStagingEnvironmentPolicy": {
+            "swaStagingEnvironmentPolicy": {
               "type": "string",
               "defaultValue": "Enabled",
               "allowedValues": [
@@ -643,17 +643,17 @@
                   "name": {
                     "value": "[parameters('name')]"
                   },
-                  "sttappLocation": {
-                    "value": "[parameters('sttappLocation')]"
+                  "swaLocation": {
+                    "value": "[parameters('swaLocation')]"
                   },
-                  "sttappSkuName": {
-                    "value": "[parameters('sttappSkuName')]"
+                  "swaSkuName": {
+                    "value": "[parameters('swaSkuName')]"
                   },
-                  "sttappAllowConfigFileUpdates": {
-                    "value": "[parameters('sttappAllowConfigFileUpdates')]"
+                  "swaAllowConfigFileUpdates": {
+                    "value": "[parameters('swaAllowConfigFileUpdates')]"
                   },
-                  "sttappStagingEnvironmentPolicy": {
-                    "value": "[parameters('sttappStagingEnvironmentPolicy')]"
+                  "swaStagingEnvironmentPolicy": {
+                    "value": "[parameters('swaStagingEnvironmentPolicy')]"
                   },
                   "acsvcConnectionString": {
                     "value": "[reference(resourceId('Microsoft.Resources/deployments', 'CommunicationServices')).outputs.connectionString.value]"
@@ -676,7 +676,7 @@
                     "name": {
                       "type": "string"
                     },
-                    "sttappLocation": {
+                    "swaLocation": {
                       "type": "string",
                       "defaultValue": "Central US",
                       "allowedValues": [
@@ -687,7 +687,7 @@
                         "West US 2"
                       ]
                     },
-                    "sttappSkuName": {
+                    "swaSkuName": {
                       "type": "string",
                       "defaultValue": "Free",
                       "allowedValues": [
@@ -695,11 +695,11 @@
                         "Standard"
                       ]
                     },
-                    "sttappAllowConfigFileUpdates": {
+                    "swaAllowConfigFileUpdates": {
                       "type": "bool",
                       "defaultValue": true
                     },
-                    "sttappStagingEnvironmentPolicy": {
+                    "swaStagingEnvironmentPolicy": {
                       "type": "string",
                       "defaultValue": "Enabled",
                       "allowedValues": [
@@ -716,11 +716,11 @@
                   },
                   "variables": {
                     "staticApp": {
-                      "name": "[format('sttapp-{0}', parameters('name'))]",
-                      "location": "[parameters('sttappLocation')]",
-                      "skuName": "[parameters('sttappSkuName')]",
-                      "allowConfigFileUpdates": "[parameters('sttappAllowConfigFileUpdates')]",
-                      "stagingEnvironmentPolicy": "[parameters('sttappStagingEnvironmentPolicy')]",
+                      "name": "[format('staticwebapp-{0}', parameters('name'))]",
+                      "location": "[parameters('swaLocation')]",
+                      "skuName": "[parameters('swaSkuName')]",
+                      "allowConfigFileUpdates": "[parameters('swaAllowConfigFileUpdates')]",
+                      "stagingEnvironmentPolicy": "[parameters('swaStagingEnvironmentPolicy')]",
                       "connectionStrings": {
                         "acs": "[parameters('acsvcConnectionString')]",
                         "cosmosDb": "[parameters('cosdbaConnectionString')]"
@@ -785,7 +785,7 @@
               "type": "string",
               "value": "[reference(resourceId('Microsoft.Resources/deployments', 'CommunicationServices')).outputs.connectionString.value]"
             },
-            "sttappDeploymentKey": {
+            "swaDeploymentKey": {
               "type": "string",
               "value": "[reference(resourceId('Microsoft.Resources/deployments', 'StaticWebApp')).outputs.deploymentKey.value]"
             }
@@ -806,9 +806,9 @@
       "type": "string",
       "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, format('rg-{0}', parameters('name'))), 'Microsoft.Resources/deployments', 'Resources')).outputs.acsvcConnectionString.value]"
     },
-    "sttappDeploymentKey": {
+    "swaDeploymentKey": {
       "type": "string",
-      "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, format('rg-{0}', parameters('name'))), 'Microsoft.Resources/deployments', 'Resources')).outputs.sttappDeploymentKey.value]"
+      "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, format('rg-{0}', parameters('name'))), 'Microsoft.Resources/deployments', 'Resources')).outputs.swaDeploymentKey.value]"
     }
   }
 }

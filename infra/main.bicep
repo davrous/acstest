@@ -50,14 +50,14 @@ param acsvcDataLocation string = 'United States'
     'West Europe'
     'West US 2'
 ])
-param sttappLocation string = 'Central US'
-param sttappSkuName string = 'Free'
-param sttappAllowConfigFileUpdates bool = true
+param swaLocation string = 'Central US'
+param swaSkuName string = 'Free'
+param swaAllowConfigFileUpdates bool = true
 @allowed([
     'Disabled'
     'Enabled'
 ])
-param sttappStagingEnvironmentPolicy string = 'Enabled'
+param swaStagingEnvironmentPolicy string = 'Enabled'
 
 module cosdba './cosmosDb.bicep' = {
     name: 'CosmosDB'
@@ -81,14 +81,14 @@ module acsvc './communicationServices.bicep' = {
     }
 }
 
-module sttapp './staticWebApp.bicep' = {
+module swa './staticWebApp.bicep' = {
     name: 'StaticWebApp'
     params: {
         name: name
-        sttappLocation: sttappLocation
-        sttappSkuName: sttappSkuName
-        sttappAllowConfigFileUpdates: sttappAllowConfigFileUpdates
-        sttappStagingEnvironmentPolicy: sttappStagingEnvironmentPolicy
+        swaLocation: swaLocation
+        swaSkuName: swaSkuName
+        swaAllowConfigFileUpdates: swaAllowConfigFileUpdates
+        swaStagingEnvironmentPolicy: swaStagingEnvironmentPolicy
         acsvcConnectionString: acsvc.outputs.connectionString
         cosdbaConnectionString: cosdba.outputs.connectionString
     }
@@ -96,4 +96,4 @@ module sttapp './staticWebApp.bicep' = {
 
 output cosdbaConnectionString string = cosdba.outputs.connectionString
 output acsvcConnectionString string = acsvc.outputs.connectionString
-output sttappDeploymentKey string = sttapp.outputs.deploymentKey
+output swaDeploymentKey string = swa.outputs.deploymentKey

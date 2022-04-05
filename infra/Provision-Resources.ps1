@@ -184,10 +184,10 @@ $params = @{
 
     acsvcDataLocation = @{ value = $CommunicationServiceDataLocation };
 
-    sttappLocation = @{ value = $StaticWebAppLocation };
-    sttappSkuName = @{ value = $StaticWebAppSkuName };
-    sttappAllowConfigFileUpdates = @{ value = $StaticWebAppAllowConfigFileUpdates };
-    sttappStagingEnvironmentPolicy = @{ value = $StaticWebAppStagingEnvironmentPolicy };
+    swaLocation = @{ value = $StaticWebAppLocation };
+    swaSkuName = @{ value = $StaticWebAppSkuName };
+    swaAllowConfigFileUpdates = @{ value = $StaticWebAppAllowConfigFileUpdates };
+    swaStagingEnvironmentPolicy = @{ value = $StaticWebAppStagingEnvironmentPolicy };
 }
 
 if ($TargetScope -eq "ResourceGroup") {
